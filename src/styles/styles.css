@@ -1,0 +1,67 @@
+:root {
+  --color-background: #131313;
+  --color-foreground: color-mix(in srgb, var(--color-background) 90%, white 5%);
+  --color-border: color-mix(in srgb, var(--color-background) 90%, white 25%);
+  --color-text: azure;
+  --color-text-unfocus: lightgray;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+@font-face {
+  font-family: "Adwaita Mono";
+  src:
+    url("../fonts/AdwaitaMono/AdwaitaMonoNerdFontMono-Regular.ttf") format("truetype");
+  font-weight: lighter;
+  font-style: normal;
+  font-display: swap;
+
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src:
+    url("../fonts/jetbrains-mono/ttf/JetBrainsMono-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  padding: 10px;
+  gap: 10px;
+}
+
+#editor-playground,
+#editor-showcase {
+  flex: 1;
+  flex-direction: row;
+  font-size: 18px;
+  font-family: "JetBrains Mono", monospace;
+  font-family: "monospace";
+  border: var(--color-border) 2px solid;
+  border-radius: 5px;
+}
+
+#editor-showcase.disabled {
+  pointer-events: none;
+  user-select: none;
+}

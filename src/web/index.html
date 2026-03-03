@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/styles/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tauri App</title>
+  <script src="/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script type="module" src="/scripts/main.js" defer></script>
+</head>
+
+<body>
+  <main class="container">
+    <pre id="editor-playground">function foo(items) {
+    var i;
+    for (i = 0; i &lt; items.length; i++) {
+        alert("Ace Rocks " + items[i]);
+    }
+}</pre>
+<pre id="editor-showcase" class="disabled"></pre>
+  </main>
+</body>
+
+</html>
