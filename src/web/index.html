@@ -11,14 +11,18 @@
 </head>
 
 <body>
-  <main class="container">
-    <pre id="editor-playground">function foo(items) {
-    var i;
-    for (i = 0; i &lt; items.length; i++) {
-        alert("Ace Rocks " + items[i]);
-    }
-}</pre>
-<pre id="editor-showcase" class="disabled"></pre>
+  <main>
+    <div class="menu-area"><button>Options</button></div>
+    <div class="content">
+      <div class="subcontent">
+        <span id="playground">Playground</span>
+        <pre id="editor-playground"></pre>
+      </div>
+      <div class="subcontent">
+        <div class="show-input"></div>
+        <pre id="editor-showcase" class="disabled"></pre>
+      </div>
+    </div>
   </main>
 </body>
 

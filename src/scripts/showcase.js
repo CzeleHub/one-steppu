@@ -1,11 +1,15 @@
+import { showInput, highlightInput } from "./showinput.js";
 
 var editor = ace.edit("editor-showcase");
+var editorPlayground = ace.edit("editor-playground");
 export async function startupShowcase() {
-
+    
     await repeatInputSequence(templates[0]);
 }
 
 async function repeatInputSequence(template) {
+    editorPlayground.setValue(template.code, -1);
+    showInput(template.input);
     while (true) {
         editor.setValue(template.code);
         editor.moveCursorTo(...template.cursor);
@@ -26,6 +30,7 @@ async function repeatInputSequence(template) {
 async function doInputSequence(chars) {
     for (const char of chars) {
         doInput(char);
+        highlightInput(char);
         await sleep(1000);
     }
 }
