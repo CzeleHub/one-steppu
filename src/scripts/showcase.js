@@ -3,15 +3,23 @@ import { showInput, highlightInput } from "./showinput.js";
 var editor = ace.edit("editor-showcase");
 var editorPlayground = ace.edit("editor-playground");
 export async function startupShowcase() {
-    
+
     await repeatInputSequence(templates[0]);
 }
 
 async function repeatInputSequence(template) {
+    const spanTitle = document.querySelector(".lesson-title>span");
+    const spanInstruction = document.querySelector("#instruction");
+    
+    spanInstruction.textContent = template.instruction;
+    spanTitle.textContent = template.title;
+
     editorPlayground.setValue(template.code, -1);
-    showInput(template.input);
+    showInput(template.keys);
+    editor.session.setMode(template.language);
+    editorPlayground.session.setMode(template.language);
     while (true) {
-        editor.setValue(template.code);
+        editor.setValue(template.code, -1);
         editor.moveCursorTo(...template.cursor);
 
         //editor needs time to configure itself..
@@ -53,11 +61,24 @@ async function sleep(ms) {
 
 const templates = [
     {
-        code: "function isJavaScriptGood() {\n" +
-            "    return \"\";\n" +
-            "}",
-        input: ['j', 'w', 'w', 'l', 'i', 'n', 'o'],
-        cursor: [0, 0],
-        vim_mode: "esc" //NORMAL
+        title: "# Vim - Basic Navigation",
+        instruction: "Use h j k l keys to navigate text in NORMAL mode",
+        keys: [
+            { value: "h", tooltip: "move left" },
+            { value: "j", tooltip: "move down" },
+            { value: "k", tooltip: "move up" },
+            { value: "l", tooltip: "move right" },
+        ],
+        code: "let arr: [[i32; 5]; 5] = [\n" +
+            "    [0, 1, 2, 3, 4],\n" +
+            "    [5, 6, 7, 8, 9],\n" +
+            "    [0, 1, 2, 3, 4],\n" +
+            "    [5, 6, 7, 8, 9],\n" +
+            "    [0, 1, 2, 3, 4],\n" +
+            "];",
+        input: ['j', 'j', 'k', 'l', 'l', 'k', 'h', 'h'],
+        cursor: [3, 11],
+        vim_mode: "esc", //NORMAL
+        language: "ace/mode/rust"
     }
 ];

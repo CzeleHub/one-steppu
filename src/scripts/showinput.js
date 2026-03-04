@@ -1,21 +1,22 @@
 
-export function showInput(input) {
+export function showInput(keys) {
     const inputContainer = document.querySelector(".show-input");
-    const uniqueInputSet = [...new Set(input)];
-    const uniqueInput = [...uniqueInputSet]; //todo sort by qwerty?
-    for (const i of uniqueInput) {
+    for (const key of keys) {
         const span = document.createElement("span");
         span.classList.add("input");
-        span.textContent = i;
-        span.dataset.input = i;
+        span.textContent = key.value;
+        span.dataset.key = key.value;
+        span.title = key.tooltip;
         inputContainer.appendChild(span);
     }
 }
 
-export function highlightInput(input) {
-    const span = document.querySelector("span[data-input='" + input + "']");
-    span.classList.add("highlight");
-    setTimeout(() => {
-        span.classList.remove("highlight");
-    }, 900);
+export function highlightInput(key) {
+    const span = document.querySelector("span[data-key='" + key + "']");
+    if (span) {
+        span.classList.add("highlight");
+        setTimeout(() => {
+            span.classList.remove("highlight");
+        }, 900);
+    }
 }
