@@ -1,9 +1,8 @@
-
-export function showInput(keys) {
-    const inputContainer = document.querySelector(".show-input-tutorial");
+export function showInputUser(keys) {
+    const inputContainer = document.querySelector(".show-input-user");
     for (const key of keys) {
         const span = document.createElement("span");
-        span.classList.add("input");
+        span.classList.add("input-user");
         span.textContent = key.value;
         span.dataset.key = key.value;
         span.title = key.tooltip;
@@ -12,7 +11,7 @@ export function showInput(keys) {
 }
 
 export function highlightInput(key) {
-    const span = document.querySelector("span.input[data-key='" + key + "']");
+    const span = document.querySelector("span.input-user[data-key='" + key + "']");
     if (span) {
         span.classList.add("highlight");
         setTimeout(() => {

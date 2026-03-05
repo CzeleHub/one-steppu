@@ -18,6 +18,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   startupShowcase();
 
+  document.getElementById("reset").addEventListener("click", () => location.reload());
+
 });
 
 

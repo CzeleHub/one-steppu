@@ -66,7 +66,8 @@ button {
   border-radius: 5px;
   height: fit-content;
   width: fit-content;
-  margin: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 button:hover {
@@ -78,8 +79,6 @@ button:active {
   color: var(--color-text);
   background-color: rgba(255, 255, 255, 0.2);
 }
-
-span {}
 
 .description {
   font-style: italic;
@@ -98,27 +97,27 @@ span {}
 
 .playground-info {
   grid-area: playground-info;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   border: 1px solid var(--color-border);
-  border-bottom-width: 0px;
-}
-
-.playground-info span {
-  font-size: 1.1rem;
+  border-bottom-width: 0;
 }
 
 .lesson-info {
   grid-area: lesson-info;
-  /* border: 1px solid var(--color-border); */
-  /* border-top-right-radius: 15px;
-  border-top-left-radius: 15px; */
-  /* border-bottom-width: 0px; */
+  border: 1px solid var(--color-border);
+  border-bottom-width: 0;
 }
 
 .lesson-instruction {
   grid-area: lesson-instruction;
   font-size: 1rem;
+}
+
+.vim-mode {
+  color: var(--color-text-unfocus);
+  background-color: var(--color-foreground);
+  padding: 2px;
 }
 
 span.lesson-tip {
@@ -146,7 +145,10 @@ span.lesson-tip {
 
 .footer {
   grid-area: footer;
-  justify-self: right;
+  display: flex;
+  /* justify-self: right; */
+  justify-content: space-between ;
+  flex: 1;
 }
 
 #editor-playground,
@@ -156,12 +158,10 @@ span.lesson-tip {
   margin: 0;
   font-family: "JetBrains Mono", monospace;
   font-family: "monospace";
-  border: var(--color-border) 1px solid;
-  border-width: 0 0 1px 0;
 }
 
 
-#editor-showcase::before {
+/* #editor-showcase::before {
   content: "";
   position: absolute;
   top: 0;
@@ -170,7 +170,7 @@ span.lesson-tip {
   width: 100%;
   background-color: rgba(128, 128, 128, 0.1);
   z-index: 5;
-}
+} */
 
 #editor-showcase {
   --progress-width: 0%;
@@ -190,17 +190,17 @@ span.lesson-tip {
   z-index: 4;
 }
 
-.show-input {
+.show-input-tutorial,
+.show-input-user {
   display: flex;
-  border: 1px solid var(--color-border);
-  border-bottom-width: 0;
   flex-direction: row;
   justify-content: center;
   padding: 10px;
   gap: 10px;
 }
 
-.input {
+.input,
+.input-user {
   font-family: "JetBrains Mono", monospace;
   font-family: "monospace";
   text-align: center;
@@ -212,7 +212,8 @@ span.lesson-tip {
   user-select: none;
 }
 
-.input:hover {
+.input:hover,
+.input-user:hover {
   outline: 2px solid var(--color-text-unfocus);
 }
 
@@ -220,7 +221,8 @@ span.text {
   padding: 5px;
 }
 
-span.input {
+span.input,
+span.input-user {
   height: max-content;
   min-width: calc(40px + 1lh);
 }

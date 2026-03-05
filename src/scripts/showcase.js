@@ -1,4 +1,5 @@
 import { showInput, highlightInput } from "./showinput.js";
+import { showInputUser } from "./showinputuser.js";
 
 var editor = ace.edit("editor-showcase");
 var editorPlayground = ace.edit("editor-playground");
@@ -16,8 +17,11 @@ async function repeatInputSequence(template) {
 
     editorPlayground.setValue(template.code, -1);
     showInput(template.keys);
+    showInputUser(template.keys);
     editor.session.setMode(template.language);
     editorPlayground.session.setMode(template.language);
+    updateVimModeSpan("NORMAL");
+
     while (true) {
         editor.setValue(template.code, -1);
         editor.moveCursorTo(...template.cursor);
@@ -25,8 +29,8 @@ async function repeatInputSequence(template) {
         //editor needs time to configure itself..
         await sleep(1000);
 
-        // set vim normal mode
-        editor.onTextInput(template.vim_mode);
+        // set vim mode
+        setVimModeShowcase("NORMAL");
 
         //editor needs time to configure itself.. again
         await sleep(1000);
@@ -72,6 +76,28 @@ function playShowcaseProgressAnimation(seconds,percent) {
 //     //     var cm = editor.state.cm;
 //     //  editor.$vimModeHandler.actions.enterInsertMode(cm, {}, cm.state.vim);
 // }, 1000);
+
+const spanVimMode = document.querySelector("#mode-tutorial");
+function setVimModeShowcase(mode) {
+    switch (mode) {
+        case "NORMAL":
+            editor.onTextInput("esc");
+            updateVimModeSpan(mode);
+            break;
+
+        case "INSERT":
+            editor.onTextInput("i");
+            updateVimModeSpan(mode);
+            break;
+    
+        default:
+            break;
+    }
+}
+
+function updateVimModeSpan(mode) {
+    spanVimMode.textContent = mode;
+}
 
 const templates = [
     {
