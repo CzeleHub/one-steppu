@@ -51,7 +51,7 @@ main {
   padding: 10px;
   grid-template-areas:
     "menu-area menu-area"
-    "lesson-title lesson-title"
+    "lesson-title lesson-instruction"
     "playground-info lesson-info"
     "editor-playground-area editor-showcase-area"
     "footer footer";
@@ -116,11 +116,16 @@ span {}
 }
 
 .lesson-instruction {
+  grid-area: lesson-instruction;
+  font-size: 1rem;
+}
+
+.lesson-tip {
   display: flex;
   background-color: var(--color-foreground);
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .editor-playground-area {
@@ -157,9 +162,28 @@ span {}
   user-select: none;
 }
 
+#editor-showcase {
+  --progress-width: 0%;
+  --duration: 0s;
+}
+
+#editor-showcase::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  transition: width linear;
+  background-color: cadetblue;
+  width: var(--progress-width);
+  transition: width var(--duration) linear;
+  z-index: 4;
+}
+
 .show-input {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   padding: 10px;
   gap: 10px;
 }

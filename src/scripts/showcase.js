@@ -30,8 +30,9 @@ async function repeatInputSequence(template) {
 
         //editor needs time to configure itself.. again
         await sleep(1000);
-
+        playShowcaseProgressAnimation(template.input.length,100);
         await doInputSequence(template.input);
+        playShowcaseProgressAnimation(0,0);
     }
 }
 
@@ -51,6 +52,14 @@ function doInput(char) {
 async function sleep(ms) {
     await new Promise(r => setTimeout(r, ms));
 }
+
+const shwocaseProgress = document.getElementById("editor-showcase");
+
+function playShowcaseProgressAnimation(seconds,percent) {
+  shwocaseProgress.style.setProperty("--duration", seconds + "s");
+  shwocaseProgress.style.setProperty("--progress-width", percent + "%");
+}
+
 
 // setInterval(() => {
 //     editor_showcase.onTextInput(char);
