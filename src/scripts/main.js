@@ -14,6 +14,8 @@ window.addEventListener("DOMContentLoaded", () => {
   editor_showcase.session.setMode("ace/mode/javascript");
   editor_showcase.setKeyboardHandler("ace/keyboard/vim");
 
+  editor.focus();
+
   startupShowcase();
 
 });

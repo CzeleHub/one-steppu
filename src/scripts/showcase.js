@@ -30,8 +30,13 @@ async function repeatInputSequence(template) {
 
         //editor needs time to configure itself.. again
         await sleep(1000);
+
+        //start animation
         playShowcaseProgressAnimation(template.input.length,100);
+
+        // do input sequence
         await doInputSequence(template.input);
+        // reset animation
         playShowcaseProgressAnimation(0,0);
     }
 }

@@ -46,12 +46,13 @@ main {
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: max-content max-content max-content auto max-content;
+  grid-template-rows: max-content max-content max-content max-content auto max-content;
   column-gap: 40px;
   padding: 10px;
   grid-template-areas:
     "menu-area menu-area"
-    "lesson-title lesson-instruction"
+    "lesson-title lesson-title"
+    "lesson-instruction lesson-instruction"
     "playground-info lesson-info"
     "editor-playground-area editor-showcase-area"
     "footer footer";
@@ -63,6 +64,9 @@ button {
   background-color: var(--color-background);
   border: 1px solid var(--color-border);
   border-radius: 5px;
+  height: fit-content;
+  width: fit-content;
+  margin: 5px;
 }
 
 button:hover {
@@ -96,10 +100,7 @@ span {}
   grid-area: playground-info;
   display: flex;
   flex-direction: column;
-  background-color: var(--color-foreground);
   border: 1px solid var(--color-border);
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
   border-bottom-width: 0px;
 }
 
@@ -109,10 +110,10 @@ span {}
 
 .lesson-info {
   grid-area: lesson-info;
-  border: 1px solid var(--color-border);
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
-  border-bottom-width: 0px;
+  /* border: 1px solid var(--color-border); */
+  /* border-top-right-radius: 15px;
+  border-top-left-radius: 15px; */
+  /* border-bottom-width: 0px; */
 }
 
 .lesson-instruction {
@@ -120,12 +121,11 @@ span {}
   font-size: 1rem;
 }
 
-.lesson-tip {
+span.lesson-tip {
   display: flex;
-  background-color: var(--color-foreground);
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
+  justify-content: right;
   font-size: 1rem;
+  font-style: italic;
 }
 
 .editor-playground-area {
@@ -140,10 +140,13 @@ span {}
   display: flex;
   flex-direction: column;
   border: 1px solid var(--color-border);
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .footer {
   grid-area: footer;
+  justify-self: right;
 }
 
 #editor-playground,
@@ -157,9 +160,16 @@ span {}
   border-width: 0 0 1px 0;
 }
 
-#editor-showcase.disabled {
-  pointer-events: none;
-  user-select: none;
+
+#editor-showcase::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.1);
+  z-index: 5;
 }
 
 #editor-showcase {
@@ -182,6 +192,8 @@ span {}
 
 .show-input {
   display: flex;
+  border: 1px solid var(--color-border);
+  border-bottom-width: 0;
   flex-direction: row;
   justify-content: center;
   padding: 10px;
@@ -195,7 +207,13 @@ span {}
   color: var(--color-text-unfocus);
   padding: 20px;
   border: solid 1px var(--color-border);
-  border-radius: 15px;
+  border-radius: 15px; 
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.input:hover {
+  outline: 2px solid var(--color-text-unfocus);
 }
 
 span.text {
@@ -208,7 +226,7 @@ span.input {
 }
 
 span.highlight {
-  background-color: var(--color-foreground);
+  background-color: rgba(255, 255, 255, 0.1);
   color: var(--color-text);
-  outline: 2px solid var(--color-border);
+  outline: 2px solid rgba(255, 255, 255, 0.2);
 }
