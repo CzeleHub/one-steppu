@@ -80,6 +80,14 @@ button:active {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
+button:disabled {
+  opacity: 0.5;
+  color: var(--color-text-unfocus);
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 .description {
   font-style: italic;
 }
@@ -141,7 +149,7 @@ span.lesson-tip {
   grid-area: footer;
   display: flex;
   /* justify-self: right; */
-  justify-content: space-between ;
+  justify-content: space-between;
   flex: 1;
 }
 
@@ -201,7 +209,7 @@ span.lesson-tip {
   color: var(--color-text-unfocus);
   padding: 20px;
   border: solid 1px var(--color-border);
-  border-radius: 15px; 
+  border-radius: 15px;
   -webkit-user-select: none;
   user-select: none;
 }
