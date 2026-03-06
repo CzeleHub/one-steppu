@@ -1,5 +1,4 @@
-import { showInput, highlightInput } from "./showinput.js";
-import { showInputUser } from "./showinputuser.js";
+import { showInput, highlightInput } from "./input.js";
 
 var editor = ace.edit("editor-showcase");
 var editorPlayground = ace.edit("editor-playground");
@@ -11,16 +10,16 @@ export async function startupShowcase() {
 async function repeatInputSequence(template) {
     const spanTitle = document.querySelector(".lesson-title>span");
     const spanInstruction = document.querySelector("#instruction");
-    
+
     spanInstruction.textContent = template.instruction;
     spanTitle.textContent = template.title;
 
     editorPlayground.setValue(template.code, -1);
+
     showInput(template.keys);
-    showInputUser(template.keys);
+
     editor.session.setMode(template.language);
     editorPlayground.session.setMode(template.language);
-    updateVimModeSpan("NORMAL");
 
     while (true) {
         editor.setValue(template.code, -1);
@@ -30,18 +29,18 @@ async function repeatInputSequence(template) {
         await sleep(1000);
 
         // set vim mode
-        setVimModeShowcase("NORMAL");
+        editor.onTextInput("esc");
 
         //editor needs time to configure itself.. again
         await sleep(1000);
 
         //start animation
-        playShowcaseProgressAnimation(template.input.length,100);
+        playShowcaseProgressAnimation(template.input.length, 100);
 
         // do input sequence
         await doInputSequence(template.input);
         // reset animation
-        playShowcaseProgressAnimation(0,0);
+        playShowcaseProgressAnimation(0, 0);
     }
 }
 
@@ -64,9 +63,9 @@ async function sleep(ms) {
 
 const shwocaseProgress = document.getElementById("editor-showcase");
 
-function playShowcaseProgressAnimation(seconds,percent) {
-  shwocaseProgress.style.setProperty("--duration", seconds + "s");
-  shwocaseProgress.style.setProperty("--progress-width", percent + "%");
+function playShowcaseProgressAnimation(seconds, percent) {
+    shwocaseProgress.style.setProperty("--duration", seconds + "s");
+    shwocaseProgress.style.setProperty("--progress-width", percent + "%");
 }
 
 
@@ -76,28 +75,6 @@ function playShowcaseProgressAnimation(seconds,percent) {
 //     //     var cm = editor.state.cm;
 //     //  editor.$vimModeHandler.actions.enterInsertMode(cm, {}, cm.state.vim);
 // }, 1000);
-
-const spanVimMode = document.querySelector("#mode-tutorial");
-function setVimModeShowcase(mode) {
-    switch (mode) {
-        case "NORMAL":
-            editor.onTextInput("esc");
-            updateVimModeSpan(mode);
-            break;
-
-        case "INSERT":
-            editor.onTextInput("i");
-            updateVimModeSpan(mode);
-            break;
-    
-        default:
-            break;
-    }
-}
-
-function updateVimModeSpan(mode) {
-    spanVimMode.textContent = mode;
-}
 
 const templates = [
     {
@@ -118,7 +95,6 @@ const templates = [
             "];",
         input: ['j', 'j', 'k', 'l', 'l', 'k', 'h', 'h'],
         cursor: [3, 11],
-        vim_mode: "esc", //NORMAL
         language: "ace/mode/rust"
     }
 ];

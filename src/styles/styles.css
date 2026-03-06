@@ -114,12 +114,6 @@ button:active {
   font-size: 1rem;
 }
 
-.vim-mode {
-  color: var(--color-text-unfocus);
-  background-color: var(--color-foreground);
-  padding: 2px;
-}
-
 span.lesson-tip {
   display: flex;
   justify-content: right;
@@ -231,4 +225,10 @@ span.highlight {
   background-color: rgba(255, 255, 255, 0.1);
   color: var(--color-text);
   outline: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+span.highlight-user {
+  background-color: rgba(0, 255, 42, 0.1);
+  color: var(--color-text);
+  outline: 2px solid rgba(0, 255, 42, 0.2);
 }

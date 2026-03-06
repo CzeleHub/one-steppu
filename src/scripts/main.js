@@ -1,5 +1,5 @@
 const { invoke } = window.__TAURI__.core;
-import { startupShowcase } from "./showcase.js";
+import { startupShowcase } from "./lesson.js";
 
 var editor = ace.edit("editor-playground");
 var editor_showcase = ace.edit("editor-showcase");
