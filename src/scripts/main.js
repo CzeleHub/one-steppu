@@ -1,5 +1,6 @@
 const { invoke } = window.__TAURI__.core;
 import { startupShowcase } from "./lesson.js";
+import { startupButtonsLogic } from "./buttons.js";
 
 var editor = ace.edit("editor-playground");
 var editor_showcase = ace.edit("editor-showcase");
@@ -16,9 +17,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   editor.focus();
 
-  startupShowcase();
+  var lesson = parseInt(localStorage.getItem("lesson") || "0", 10);
 
-  document.getElementById("reset").addEventListener("click", () => location.reload());
+  startupShowcase(lesson);
+  startupButtonsLogic();
 
 });
 

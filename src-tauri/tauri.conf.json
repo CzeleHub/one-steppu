@@ -15,7 +15,7 @@
         "height": 600,
         "minWidth": 800,
         "minHeight": 600,
-        "url": "index.html"
+        "url": "web/index.html"
       }
     ],
     "security": {

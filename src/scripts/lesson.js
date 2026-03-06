@@ -2,9 +2,10 @@ import { showInput, highlightInput } from "./input.js";
 
 var editor = ace.edit("editor-showcase");
 var editorPlayground = ace.edit("editor-playground");
-export async function startupShowcase() {
 
-    await repeatInputSequence(templates[0]);
+export async function startupShowcase(lesson) {
+    sessionStorage.setItem("lessonsCount", templates.length - 1);
+    await repeatInputSequence(templates[lesson]);
 }
 
 async function repeatInputSequence(template) {
@@ -48,7 +49,7 @@ async function doInputSequence(chars) {
     for (const char of chars) {
         doInput(char);
         highlightInput(char);
-        await sleep(1000);
+        await sleep(2000);
     }
 }
 
@@ -64,6 +65,8 @@ async function sleep(ms) {
 const shwocaseProgress = document.getElementById("editor-showcase");
 
 function playShowcaseProgressAnimation(seconds, percent) {
+    const modifier = 2;
+    seconds = modifier * seconds;
     shwocaseProgress.style.setProperty("--duration", seconds + "s");
     shwocaseProgress.style.setProperty("--progress-width", percent + "%");
 }
@@ -81,10 +84,10 @@ const templates = [
         title: "# Vim - Basic Navigation",
         instruction: "Use h j k l keys to navigate text in NORMAL mode",
         keys: [
-            { value: "h", tooltip: "move left" },
-            { value: "j", tooltip: "move down" },
-            { value: "k", tooltip: "move up" },
-            { value: "l", tooltip: "move right" },
+            { value: "h", tooltip: "move cursor left" },
+            { value: "j", tooltip: "move cursor down" },
+            { value: "k", tooltip: "move cursor up" },
+            { value: "l", tooltip: "move cursor right" },
         ],
         code: "let arr: [[i32; 5]; 5] = [\n" +
             "    [0, 1, 2, 3, 4],\n" +
@@ -95,6 +98,25 @@ const templates = [
             "];",
         input: ['j', 'j', 'k', 'l', 'l', 'k', 'h', 'h'],
         cursor: [3, 11],
+        language: "ace/mode/rust"
+    },
+    {
+        title: "# Vim - Basic Navigation",
+        instruction: "Use H M L keys to navigate text in NORMAL mode",
+        keys: [
+            { value: "H", tooltip: "move cursor to top of editor" },
+            { value: "M", tooltip: "move cursor to middle of editor" },
+            { value: "L", tooltip: "move cursor to bottom of editor" },
+        ],
+        code: "let arr: [[i32; 5]; 5] = [\n" +
+            "    [0, 1, 2, 3, 4],\n" +
+            "    [5, 6, 7, 8, 9],\n" +
+            "    [0, 1, 2, 3, 4],\n" +
+            "    [5, 6, 7, 8, 9],\n" +
+            "    [0, 1, 2, 3, 4],\n" +
+            "];",
+        input: ['H', 'M', 'L'],
+        cursor: [2, 11],
         language: "ace/mode/rust"
     }
 ];

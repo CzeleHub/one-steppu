@@ -25,7 +25,7 @@ export function highlightInput(key) {
         span.classList.add("highlight");
         setTimeout(() => {
             span.classList.remove("highlight");
-        }, 900);
+        }, 1900);
     }
 }
 
@@ -49,10 +49,6 @@ editor.textInput.getElement().addEventListener("keydown", (e) => {
     highlightUserInput(e.key);
 });
 
-// document.addEventListener("keydown", (e) => {
-//     console.log(e.key);
-//     highlightUserInput(e.key);
-// });
 
 document.addEventListener("keyup", (e) => {
     removeHighlightUserInput(e.key);
