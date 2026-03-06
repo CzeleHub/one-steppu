@@ -3,6 +3,7 @@
 
 fn main() {
     // see https://forums.developer.nvidia.com/t/webkit-tauri-application-white-screen-on-dgx-spark-gpupermission-issues/348741/2
+    #[cfg(target_os = "linux")]
     std::env::set_var("WEBKIT_DISABLE_DMABUF_RENDERER", "1");
 
     onesteppu_lib::run()
