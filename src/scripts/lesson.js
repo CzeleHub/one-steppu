@@ -124,5 +124,20 @@ const templates = [
         input: ['H', 'M', 'L'],
         cursor: [2, 11],
         language: "ace/mode/rust"
+    },
+    {
+        title: "Vim - Basic Navigation",
+        instruction: "Use w key to jump forward to the start of the word in NORMAL mode",
+        keys: [
+            { value: "w", tooltip: "jump forward to the start of the word" },
+        ],
+        code: "public static void processAbstractFactoryServiceProviderManagerContext() {\n" +
+            "     AbstractFactoryServiceProviderManager.getInstance().initializeContext();\n" +
+            "}",
+        input: ['w', 'w', 'w', 'w'],
+        cursor: [0, 0],
+        language: "ace/mode/java"
     }
+
+    
 ];
