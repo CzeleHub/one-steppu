@@ -14,7 +14,18 @@
   <main>
     <div class="menu-area">
       <span class="description text">Learn shortcuts in small daily steps!</span>
-      <button>TODO Options</button>
+      <button id="options" popovertarget="app-options" popovertargetaction="toggle">Options</button>
+      <app-options popover="auto" id="app-options">
+        <div class="options-container">
+          <!-- <div>
+            <span for="autostart">Run on system startup</span>
+            <input type="checkbox" id="autostart">
+          </div> -->
+          <!-- <button>Autostart</button> -->
+           <span>Run on system startup Yes | No</span>
+           <span>Tutorial speed 0.5x 1x 1.5x</span>
+        </div>
+      </app-options>
     </div>
     <div class="lesson-title">
       <span class="text"></span>

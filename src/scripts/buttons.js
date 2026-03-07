@@ -1,9 +1,14 @@
 
+import { setAutostart } from "./autostart.js";
+
 export function startupButtonsLogic() {
     document.getElementById("reset").addEventListener("click", () => location.reload());
 
     var lesson = parseInt(localStorage.getItem("lesson") || "0", 10);
     var lessonCount = parseInt(sessionStorage.getItem("lessonsCount") || "1", 10);
+
+    const buttonOptions = document.getElementById("options");
+    buttonOptions.addEventListener("click", () => showOptions());
 
     const buttonNext = document.getElementById("next");
     const buttonPrevious = document.getElementById("previous");
@@ -33,4 +38,8 @@ function changeLesson(val) {
 
     localStorage.setItem("lesson", lesson);
     location.reload();
+}
+
+function showOptions() {
+    
 }
