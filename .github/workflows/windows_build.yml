@@ -21,3 +21,9 @@ jobs:
 
       - name: Build
         run: cargo tauri build --target x86_64-pc-windows-msvc
+        
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: tauri-build-windows
+          path: src-tauri/target/x86_64-pc-windows-msvc/release/
