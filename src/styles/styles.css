@@ -163,16 +163,15 @@ span.lesson-tip {
 }
 
 
-/* #editor-showcase::before {
+#editor-showcase::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
-  width: 100%;
-  background-color: rgba(128, 128, 128, 0.1);
+  width: 100%;  
   z-index: 5;
-} */
+}
 
 #editor-showcase {
   --progress-width: 0%;

@@ -11,8 +11,9 @@ async function repeatInputSequence(template) {
     const spanTitle = document.querySelector(".lesson-title>span");
     const spanInstruction = document.querySelector("#instruction");
 
+    var lesson = parseInt(localStorage.getItem("lesson") || "0", 10) + 1;
     spanInstruction.textContent = template.instruction;
-    spanTitle.textContent = template.title;
+    spanTitle.textContent = "#" + lesson + " " + template.title;
 
     editorPlayground.setValue(template.code, -1);
 
@@ -20,6 +21,8 @@ async function repeatInputSequence(template) {
 
     editor.session.setMode(template.language);
     editorPlayground.session.setMode(template.language);
+
+    document.querySelector("#editor-showcase").querySelector(".ace_cursor-layer").classList.remove("ace_hidden-cursors");
 
     while (true) {
         editor.setValue(template.code, -1);
@@ -30,7 +33,7 @@ async function repeatInputSequence(template) {
 
         // set vim mode
         editor.onTextInput("esc");
-
+        
         //editor needs time to configure itself.. again
         await sleep(1000);
 
@@ -84,7 +87,7 @@ export function setSessionStorageLessonCount() {
 
 const templates = [
     {
-        title: "# Vim - Basic Navigation",
+        title: "Vim - Basic Navigation",
         instruction: "Use h j k l keys to navigate text in NORMAL mode",
         keys: [
             { value: "h", tooltip: "move cursor left" },
@@ -104,7 +107,7 @@ const templates = [
         language: "ace/mode/rust"
     },
     {
-        title: "# Vim - Basic Navigation",
+        title: "Vim - Basic Navigation",
         instruction: "Use H M L keys to navigate text in NORMAL mode",
         keys: [
             { value: "H", tooltip: "move cursor to top of editor" },
