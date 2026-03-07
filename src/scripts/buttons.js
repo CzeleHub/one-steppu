@@ -2,9 +2,22 @@
 export function startupButtonsLogic() {
     document.getElementById("reset").addEventListener("click", () => location.reload());
 
-    document.getElementById("next").addEventListener("click", () => changeLesson(+1));
-    document.getElementById("previous").addEventListener("click", () => changeLesson(-1));
+    var lesson = parseInt(localStorage.getItem("lesson") || "0", 10);
+    var lessonCount = parseInt(sessionStorage.getItem("lessonsCount") || "1", 10);
 
+    const buttonNext = document.getElementById("next");
+    const buttonPrevious = document.getElementById("previous");
+
+    if (lesson >= lessonCount) {
+        buttonNext.disabled = true;
+    }
+
+    if (lesson <= 0) {
+        buttonPrevious.disabled = true;
+    }
+
+    buttonNext.addEventListener("click", () => changeLesson(+1));
+    buttonPrevious.addEventListener("click", () => changeLesson(-1));
 }
 
 function changeLesson(val) {

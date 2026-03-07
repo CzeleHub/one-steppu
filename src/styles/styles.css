@@ -47,7 +47,7 @@ main {
   height: 100vh;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: max-content max-content max-content max-content auto max-content;
-  column-gap: 40px;
+  column-gap: 10px;
   padding: 10px;
   grid-template-areas:
     "menu-area menu-area"

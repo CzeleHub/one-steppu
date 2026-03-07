@@ -4,7 +4,6 @@ var editor = ace.edit("editor-showcase");
 var editorPlayground = ace.edit("editor-playground");
 
 export async function startupShowcase(lesson) {
-    sessionStorage.setItem("lessonsCount", templates.length - 1);
     await repeatInputSequence(templates[lesson]);
 }
 
@@ -78,6 +77,10 @@ function playShowcaseProgressAnimation(seconds, percent) {
 //     //     var cm = editor.state.cm;
 //     //  editor.$vimModeHandler.actions.enterInsertMode(cm, {}, cm.state.vim);
 // }, 1000);
+
+export function setSessionStorageLessonCount() {
+    sessionStorage.setItem("lessonsCount", templates.length - 1);
+}
 
 const templates = [
     {

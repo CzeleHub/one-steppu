@@ -1,5 +1,5 @@
 const { invoke } = window.__TAURI__.core;
-import { startupShowcase } from "./lesson.js";
+import { startupShowcase, setSessionStorageLessonCount } from "./lesson.js";
 import { startupButtonsLogic } from "./buttons.js";
 
 var editor = ace.edit("editor-playground");
@@ -16,6 +16,8 @@ window.addEventListener("DOMContentLoaded", () => {
   editor_showcase.setKeyboardHandler("ace/keyboard/vim");
 
   editor.focus();
+
+  setSessionStorageLessonCount();
 
   var lesson = parseInt(localStorage.getItem("lesson") || "0", 10);
 
