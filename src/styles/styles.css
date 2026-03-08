@@ -46,15 +46,17 @@ main {
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: max-content max-content max-content max-content auto max-content;
+  grid-template-rows: max-content max-content max-content max-content auto max-content auto max-content;
   column-gap: 10px;
   padding: 10px;
   grid-template-areas:
     "menu-area menu-area"
     "lesson-title lesson-title"
     "lesson-instruction lesson-instruction"
-    "playground-info lesson-info"
-    "editor-playground-area editor-showcase-area"
+    "lesson-info lesson-info"
+    "editor-showcase-area editor-showcase-area"
+    "playground-info playground-info"
+    "editor-playground-area editor-playground-area"
     "footer footer";
 }
 
@@ -264,8 +266,8 @@ app-options {
   background-color: var(--color-background);
   border-color: var(--color-border);
   border-style: solid;
-  width: min(50vw, 800px);
-  height: calc(100% - 5px);
+  width: min(fit-content, 800px);
+  height: min(50%, fit-content);
   border-width: 1px;
   z-index: 10;
 }
@@ -276,13 +278,13 @@ app-options {
   gap: 5px;
 }
 
-/* input[type="checkbox"] {
-  appearance: none;
-  width: 1ch;
-  height: 1ch;   
-  border: 1px solid var(--color-border);
+.options-container label,
+.options-container span {
+  white-space: nowrap;
 }
 
-input[type="checkbox"]:checked {
-  background: var(--color-text);
-} */
+.check-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
