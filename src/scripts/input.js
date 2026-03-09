@@ -1,6 +1,6 @@
 
 export function showInput(keys) {
-    const inputContainer = document.querySelector(".show-input-tutorial");
+    const inputContainer = document.querySelector(".show-input-lesson");
     const inputUserContainer = document.querySelector(".show-input-user");
     for (const key of keys) {
         const span = document.createElement("span");
@@ -43,7 +43,7 @@ function removeHighlightUserInput(key) {
     }
 }
 
-var editor = ace.edit("editor-playground");   
+var editor = ace.edit("editor-user");   
 
 editor.textInput.getElement().addEventListener("keydown", (e) => {
     highlightUserInput(e.key);

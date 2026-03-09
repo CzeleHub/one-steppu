@@ -19,8 +19,8 @@ export function startupButtonsLogic() {
         buttonPrevious.disabled = true;
     }
 
-    buttonNext.addEventListener("click", () => changeLesson(+1));
-    buttonPrevious.addEventListener("click", () => changeLesson(-1));
+    buttonNext.addEventListener("click", () => changelesson(+1));
+    buttonPrevious.addEventListener("click", () => changelesson(-1));
 
     const buttonAutostart = document.querySelector(".check-button");
     const checkInput = buttonAutostart.querySelector("input");
@@ -28,7 +28,7 @@ export function startupButtonsLogic() {
     buttonAutostart.addEventListener("click", () => isEnabled().then(result => {setAutostart(!result)}));
 }
 
-function changeLesson(val) {
+function changelesson(val) {
     var lesson = parseInt(localStorage.getItem("lesson") || "0", 10);
     var lessonCount = parseInt(sessionStorage.getItem("lessonsCount") || "1", 10);
 

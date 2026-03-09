@@ -54,9 +54,9 @@ main {
     "lesson-title lesson-title"
     "lesson-instruction lesson-instruction"
     "lesson-info lesson-info"
-    "editor-showcase-area editor-showcase-area"
-    "playground-info playground-info"
-    "editor-playground-area editor-playground-area"
+    "editor-lesson-area editor-lesson-area"
+    "user-info user-info"
+    "editor-user-area editor-user-area"
     "footer footer";
 }
 
@@ -105,8 +105,8 @@ button:disabled {
   font-size: 2rem;
 }
 
-.playground-info {
-  grid-area: playground-info;
+.user-info {
+  grid-area: user-info;
   /* display: flex;
   flex-direction: column; */
   border: 1px solid var(--color-border);
@@ -131,15 +131,15 @@ span.lesson-tip {
   font-style: italic;
 }
 
-.editor-playground-area {
-  grid-area: editor-playground-area;
+.editor-user-area {
+  grid-area: editor-user-area;
   display: flex;
   flex-direction: column;
   border: 1px solid var(--color-border);
 }
 
-.editor-showcase-area {
-  grid-area: editor-showcase-area;
+.editor-lesson-area {
+  grid-area: editor-lesson-area;
   display: flex;
   flex-direction: column;
   border: 1px solid var(--color-border);
@@ -155,8 +155,9 @@ span.lesson-tip {
   flex: 1;
 }
 
-#editor-playground,
-#editor-showcase {
+
+#editor-user,
+#editor-lesson {
   height: 100%;
   font-size: 18px;
   margin: 0;
@@ -165,7 +166,7 @@ span.lesson-tip {
 }
 
 
-#editor-showcase::before {
+#editor-lesson::before {
   content: "";
   position: absolute;
   top: 0;
@@ -175,12 +176,12 @@ span.lesson-tip {
   z-index: 5;
 }
 
-#editor-showcase {
+#editor-lesson {
   --progress-width: 0%;
   --duration: 0s;
 }
 
-#editor-showcase::after {
+#editor-lesson::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -193,7 +194,7 @@ span.lesson-tip {
   z-index: 4;
 }
 
-.show-input-tutorial,
+.show-input-lesson,
 .show-input-user {
   display: flex;
   flex-direction: row;
