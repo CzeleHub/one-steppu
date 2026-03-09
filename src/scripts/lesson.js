@@ -4,7 +4,7 @@ var editor = ace.edit("editor-lesson");
 var editorUser = ace.edit("editor-user");
 
 export async function startupLesson(lesson) {
-    await repeatInputSequence(templates[lesson]);
+    await repeatInputSequence(lessons[lesson]);
 }
 
 async function repeatInputSequence(template) {
@@ -82,10 +82,10 @@ function playlessonProgressAnimation(seconds, percent) {
 // }, 1000);
 
 export function setSessionStorageLessonCount() {
-    sessionStorage.setItem("lessonsCount", templates.length - 1);
+    sessionStorage.setItem("lessonsCount", lessons.length - 1);
 }
 
-const templates = [
+const lessons = [
     {
         title: "Vim - Basic Navigation",
         instruction: "Use h j k l keys to navigate text in NORMAL mode",

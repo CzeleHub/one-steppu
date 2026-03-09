@@ -15,7 +15,8 @@ window.addEventListener("DOMContentLoaded", () => {
   editor_lesson.session.setMode("ace/mode/javascript");
   editor_lesson.setKeyboardHandler("ace/keyboard/vim");
 
-  editor.focus();
+  // editor.focus();
+  document.querySelector(".editor-user-area").classList.add("display-none");
 
   setSessionStorageLessonCount();
 

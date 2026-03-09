@@ -18,7 +18,7 @@
       <app-options popover="auto" id="app-options">
         <div class="options-container">
           <button class="check-button">
-            <label >Run on system startup <input type="checkbox" id="autostart"></label>
+            <label>Run on system startup <input type="checkbox" id="autostart"></label>
           </button>
           <span>TODO lesson speed 0.5x 1x 1.5x</span>
         </div>
@@ -28,18 +28,24 @@
       <span class="text"></span>
     </div>
     <span class="lesson-instruction text" id="instruction"></span>
-    <div class="user-info">
-      <div class="show-input-user"></div>
-      <span class="vim-mode" id="mode-user"></span>
+    <div class="lesson-toolbar">
+      <!-- <button id="change-speed"></button> -->
+      <button id="switch-editors">Try it out</button>
     </div>
-    <div class="lesson-info">
-      <div class="show-input-lesson"></div>
-    </div>
-    <div class="editor-user-area">
-      <pre id="editor-user"></pre>
-    </div>
-    <div class="editor-lesson-area">
-      <pre id="editor-lesson" class="disabled"></pre>
+    <div class="editors-area">
+      <div class="editor-user-area area">
+        <div class="user-info">
+          <div class="show-input-user"></div>
+          <span class="vim-mode" id="mode-user"></span>
+        </div>
+        <pre id="editor-user"></pre>
+      </div>
+      <div class="editor-lesson-area area">
+        <div class="lesson-info">
+          <div class="show-input-lesson"></div>
+        </div>
+        <pre id="editor-lesson" class="disabled"></pre>
+      </div>
     </div>
     <div class="footer">
       <button id="reset">Reset</button>

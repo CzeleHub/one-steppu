@@ -26,6 +26,12 @@ export function startupButtonsLogic() {
     const checkInput = buttonAutostart.querySelector("input");
     isEnabled().then(result => {checkInput.checked = result});
     buttonAutostart.addEventListener("click", () => isEnabled().then(result => {setAutostart(!result)}));
+
+    const buttonSwitch = document.getElementById("switch-editors");
+    // const buttonSpeed = document.getElementById("change-speed");
+
+    buttonSwitch.addEventListener("click", () => changeEditor());
+    // buttonSpeed.addEventListener("click", () => );
 }
 
 function changelesson(val) {
@@ -41,4 +47,12 @@ function changelesson(val) {
 
     localStorage.setItem("lesson", lesson);
     location.reload();
+}
+
+function changeEditor() {
+    const currentEditor = document.querySelector(".area:not(.display-none)");
+    const hiddenEditor = document.querySelector(".area.display-none");
+
+    currentEditor.classList.add("display-none");
+    hiddenEditor.classList.remove("display-none");
 }

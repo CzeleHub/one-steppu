@@ -46,17 +46,16 @@ main {
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: max-content max-content max-content max-content auto max-content auto max-content;
+  grid-template-rows: max-content max-content max-content max-content auto max-content;
   column-gap: 10px;
   padding: 10px;
   grid-template-areas:
     "menu-area menu-area"
     "lesson-title lesson-title"
     "lesson-instruction lesson-instruction"
-    "lesson-info lesson-info"
-    "editor-lesson-area editor-lesson-area"
-    "user-info user-info"
-    "editor-user-area editor-user-area"
+    "lesson-toolbar lesson-toolbar"
+    "editors-area editors-area"
+    /* "editor-user-area editor-user-area" */
     "footer footer";
 }
 
@@ -107,16 +106,14 @@ button:disabled {
 
 .user-info {
   grid-area: user-info;
-  /* display: flex;
-  flex-direction: column; */
   border: 1px solid var(--color-border);
-  border-bottom-width: 0;
+  border-width: 0 0 1px 0;
 }
 
 .lesson-info {
   grid-area: lesson-info;
   border: 1px solid var(--color-border);
-  border-bottom-width: 0;
+  border-width: 0 0 1px 0;
 }
 
 .lesson-instruction {
@@ -131,20 +128,34 @@ span.lesson-tip {
   font-style: italic;
 }
 
+.editors-area {
+  grid-area: editors-area;
+  display: flex;
+  flex-direction: row;
+}
+
 .editor-user-area {
   grid-area: editor-user-area;
   display: flex;
+  flex: 1;
   flex-direction: column;
   border: 1px solid var(--color-border);
 }
 
+
+
 .editor-lesson-area {
   grid-area: editor-lesson-area;
   display: flex;
+  flex: 1;
   flex-direction: column;
   border: 1px solid var(--color-border);
   user-select: none;
   -webkit-user-select: none;
+}
+
+.display-none {
+  display: none;
 }
 
 .footer {
@@ -243,17 +254,11 @@ span.highlight-user {
   outline: 2px solid rgba(0, 255, 42, 0.2);
 }
 
-/* app-options {
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 50px;
-  width: min(50%, 800px);
-  height: 100%;
-  z-index: 10;
-  background-color: var(--color-background);
-  border: solid 1px var(--color-border);
-} */
+.lesson-toolbar {
+  grid-area: lesson-toolbar;
+  display: flex;
+  justify-content: space-between;
+}
 
 #options {
   anchor-name: --app-options;
