@@ -139,12 +139,21 @@ span.lesson-tip {
   grid-area: editors-area;
   display: flex;
   flex-direction: row;
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
 }
+
+.editors-area::-webkit-scrollbar {
+  display: none;
+}
+
 
 .editor-user-area {
   grid-area: editor-user-area;
   display: flex;
-  flex: 1;
+  /* flex: 1; */
+  flex: 0 0 100%;
   flex-direction: column;
   border: 1px solid var(--color-border);
 }
@@ -154,16 +163,16 @@ span.lesson-tip {
 .editor-lesson-area {
   grid-area: editor-lesson-area;
   display: flex;
-  flex: 1;
+  flex: 0 0 100%;
+  /* flex: 1; */
   flex-direction: column;
   border: 1px solid var(--color-border);
   user-select: none;
   -webkit-user-select: none;
 }
 
-.display-none {
-  display: none;
-}
+
+
 
 .footer {
   grid-area: footer;

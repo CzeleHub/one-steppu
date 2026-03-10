@@ -24,8 +24,8 @@ export function startupButtonsLogic() {
 
     const buttonAutostart = document.querySelector(".check-button");
     const checkInput = buttonAutostart.querySelector("input");
-    isEnabled().then(result => {checkInput.checked = result});
-    buttonAutostart.addEventListener("click", () => isEnabled().then(result => {setAutostart(!result)}));
+    isEnabled().then(result => { checkInput.checked = result });
+    buttonAutostart.addEventListener("click", () => isEnabled().then(result => { setAutostart(!result) }));
 
     const buttonSwitch = document.getElementById("switch-editors");
     // const buttonSpeed = document.getElementById("change-speed");
@@ -40,8 +40,7 @@ function changelesson(val) {
 
     lesson = lesson + val;
 
-    if (lesson < 0 || lesson > lessonCount)
-    {
+    if (lesson < 0 || lesson > lessonCount) {
         return;
     }
 
@@ -50,9 +49,18 @@ function changelesson(val) {
 }
 
 function changeEditor() {
-    const currentEditor = document.querySelector(".area:not(.display-none)");
-    const hiddenEditor = document.querySelector(".area.display-none");
+    const editorsArea = document.querySelector(".editors-area");
+    const buttonSwitch = document.getElementById("switch-editors");
 
-    currentEditor.classList.add("display-none");
-    hiddenEditor.classList.remove("display-none");
+    const scrollLeft = editorsArea.scrollLeft;
+    const clientWidth = editorsArea.clientWidth;
+
+    if (scrollLeft == clientWidth) {
+        editorsArea.scrollLeft = 0;
+        buttonSwitch.textContent = "Try it out!";
+    } else {
+        editorsArea.scrollLeft = editorsArea.scrollWidth;
+        buttonSwitch.textContent = "Rewatch the example";
+        ace.edit("editor-user").focus();
+    }
 }
