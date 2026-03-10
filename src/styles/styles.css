@@ -4,7 +4,14 @@
   --color-border: color-mix(in srgb, var(--color-background) 90%, white 25%);
   --color-text: azure;
   --color-text-unfocus: lightgray;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
+
 
 * {
   box-sizing: border-box;
@@ -166,7 +173,6 @@ span.lesson-tip {
   flex: 1;
 }
 
-
 #editor-user,
 #editor-lesson {
   height: 100%;
@@ -176,6 +182,11 @@ span.lesson-tip {
   font-family: "monospace";
 }
 
+#editor-lesson {
+  --progress-width: 0%;
+  --duration: 0s;
+
+}
 
 #editor-lesson::before {
   content: "";
@@ -185,11 +196,6 @@ span.lesson-tip {
   height: 100%;
   width: 100%;
   z-index: 5;
-}
-
-#editor-lesson {
-  --progress-width: 0%;
-  --duration: 0s;
 }
 
 #editor-lesson::after {
