@@ -203,7 +203,7 @@ span.lesson-tip {
 .footer {
   grid-area: footer;
   display: flex;
-  /* justify-self: right; */
+  /* display: none; */
   justify-content: space-between;
   flex: 1;
 }

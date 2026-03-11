@@ -19,6 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const editorsArea = document.querySelector(".editors-area");
   editorsArea.style.scrollBehavior = "auto";
   changeToLesson();
+  sessionStorage.setItem("interrupt", JSON.stringify(false));
   editorsArea.style.scrollBehavior = "smooth";
 
   setSessionStorageLessonCount();

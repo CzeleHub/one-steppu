@@ -17,19 +17,21 @@
       <button id="options" popovertarget="app-options" popovertargetaction="toggle">Options</button>
       <app-options popover="auto" id="app-options">
         <div class="options-container">
-          <button class="check-button">
-            <label>Run on system startup <input type="checkbox" id="autostart"></label>
+          <button class="check-button" id="autostart">
+            <label>Run on system startup<input type="checkbox"></label>
           </button>
-          
+          <!-- <button class="check-button" id="devtools">
+            <label>Enable devtools<input type="checkbox"></label>
+          </button> -->
         </div>
       </app-options>
     </div>
     <div class="lesson-area">
       <div class="lesson-information">
         <div class="lesson-title">
-        <span class="text"></span>
-      </div>
-      <div class="lesson-instruction" id="instruction"></div>
+          <span class="text"></span>
+        </div>
+        <div class="lesson-instruction" id="instruction"></div>
       </div>
       <div class="lesson-toolbar">
         <input type="radio" name="choice" id="radio-user">

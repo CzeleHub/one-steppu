@@ -13,7 +13,7 @@ async function repeatInputSequence(template) {
 
     var lesson = parseInt(localStorage.getItem("lesson") || "0", 10) + 1;
     // spanInstruction.textContent = template.instruction;
-    
+
 
     for (const key of template.keys) {
         const div = document.createElement("div");
@@ -49,13 +49,13 @@ async function repeatInputSequence(template) {
         editor.moveCursorTo(...template.cursor);
 
         //editor needs time to configure itself..
-        await sleep(1000);
+        await sleep(500);
 
         // set vim mode
         editor.onTextInput("esc");
 
         //editor needs time to configure itself.. again
-        await sleep(1000);
+        await sleep(500);
 
         //start animation
         playlessonProgressAnimation(template.input.length, 100);
@@ -69,9 +69,21 @@ async function repeatInputSequence(template) {
 
 async function doInputSequence(chars) {
     for (const char of chars) {
+        var doBreak = false;
         doInput(char);
         highlightInput(char);
-        await sleep(2000);
+        for (let index = 0; index < 10; index++) {
+            const interrupted = JSON.parse(sessionStorage.getItem("interrupt") ?? "false");
+            if (interrupted) {
+                sessionStorage.setItem("interrupt", JSON.stringify(false));
+                doBreak = true;
+                break;
+            }
+            await sleep(200);
+        }
+        if (doBreak) {
+            break;
+        }
     }
 }
 

@@ -22,7 +22,7 @@ export function startupButtonsLogic() {
     buttonNext.addEventListener("click", () => changelesson(+1));
     buttonPrevious.addEventListener("click", () => changelesson(-1));
 
-    const buttonAutostart = document.querySelector(".check-button");
+    const buttonAutostart = document.querySelector("#autostart");
     const checkInput = buttonAutostart.querySelector("input");
     isEnabled().then(result => { checkInput.checked = result });
     buttonAutostart.addEventListener("click", () => isEnabled().then(result => { setAutostart(!result) }));
@@ -52,27 +52,15 @@ function changelesson(val) {
 
 function changeToEditor() {
     const editorsArea = document.querySelector(".editors-area");
-    // const buttonSwitch = document.getElementById("switch-editors");
 
-    const scrollLeft = editorsArea.scrollLeft;
-    const clientWidth = editorsArea.clientWidth;
-
-    
-        editorsArea.scrollLeft = 0;
-        // buttonSwitch.textContent = "Rewatch the example";
-        ace.edit("editor-user").focus();
-    
+    editorsArea.scrollLeft = 0;
+    ace.edit("editor-user").focus();
 }
 
 export function changeToLesson() {
     const editorsArea = document.querySelector(".editors-area");
-    // const buttonSwitch = document.getElementById("switch-editors");
 
-    const scrollLeft = editorsArea.scrollLeft;
-    const clientWidth = editorsArea.clientWidth;
+    sessionStorage.setItem("interrupt", JSON.stringify(true));
 
-    
-        editorsArea.scrollLeft = editorsArea.scrollWidth;
-        // buttonSwitch.textContent = "Try it out!";
-    
+    editorsArea.scrollLeft = editorsArea.scrollWidth;
 }
