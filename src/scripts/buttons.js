@@ -52,7 +52,7 @@ function changelesson(val) {
 
 function changeToEditor() {
     const editorsArea = document.querySelector(".editors-area");
-    const buttonSwitch = document.getElementById("switch-editors");
+    // const buttonSwitch = document.getElementById("switch-editors");
 
     const scrollLeft = editorsArea.scrollLeft;
     const clientWidth = editorsArea.clientWidth;
@@ -64,9 +64,9 @@ function changeToEditor() {
     
 }
 
-function changeToLesson() {
+export function changeToLesson() {
     const editorsArea = document.querySelector(".editors-area");
-    const buttonSwitch = document.getElementById("switch-editors");
+    // const buttonSwitch = document.getElementById("switch-editors");
 
     const scrollLeft = editorsArea.scrollLeft;
     const clientWidth = editorsArea.clientWidth;

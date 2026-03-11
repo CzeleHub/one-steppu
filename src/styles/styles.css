@@ -3,7 +3,8 @@
   --color-foreground: color-mix(in srgb, var(--color-background) 90%, white 5%);
   --color-border: color-mix(in srgb, var(--color-background) 90%, white 25%);
   --color-text: azure;
-  --color-text-unfocus: lightgray;
+  --color-text-unfocus: rgb(180, 180, 180);
+  /* --color-text-unfocus: lightgray; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -53,16 +54,16 @@ main {
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: max-content max-content max-content max-content auto max-content;
+  grid-template-rows: max-content max-content auto max-content;
   column-gap: 10px;
   padding: 10px;
   grid-template-areas:
     "menu-area menu-area"
-    "lesson-title lesson-title"
+    "lesson-area lesson-area"
+    /* "lesson-title lesson-title"
     "lesson-instruction lesson-instruction"
-    "lesson-toolbar lesson-toolbar"
+    "lesson-toolbar lesson-toolbar" */
     "editors-area editors-area"
-    /* "editor-user-area editor-user-area" */
     "footer footer";
 }
 
@@ -133,6 +134,26 @@ span.lesson-tip {
   justify-content: right;
   font-size: 1rem;
   font-style: italic;
+}
+
+.lesson-area {
+  grid-area: lesson-area;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.lesson-information {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+#instruction {
+  display: flex;
+  flex-direction: column;
+  font-family: "JetBrains Mono", monospace;
+  font-family: "monospace";
 }
 
 .editors-area {
@@ -247,9 +268,58 @@ span.lesson-tip {
   user-select: none;
 }
 
+div.lesson-toolbar input {
+  display: none;
+}
+
 .input:hover,
-.input-user:hover {
+.input-user:hover,
+input:checked + .radio-button {
   outline: 2px solid var(--color-text-unfocus);
+}
+
+.radio-button {
+  color: var(--color-text-unfocus);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  height: fit-content;  
+  width: fit-content;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.radio-button:hover {  
+  color: var(--color-text);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.radio-button:active {
+  color: var(--color-text);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.radio-button img {
+  filter: opacity(0.5);
+}
+
+span.small-input {
+  display: inline-flex;
+  border: solid 1px var(--color-border);
+  border-radius: 5px;
+  min-width: 1lh;
+  min-height: 1lh;
+  justify-content: center;   
+}
+
+#instruction {
+  gap: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#instruction > div {
+  min-height: fit-content;
 }
 
 span.text {
@@ -258,6 +328,7 @@ span.text {
 
 span.input,
 span.input-user {
+  font-size: 26px;
   height: max-content;
   min-width: calc(40px + 1lh);
 }
@@ -277,7 +348,8 @@ span.highlight-user {
 .lesson-toolbar {
   grid-area: lesson-toolbar;
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
+  align-items: end;
 }
 
 #options {

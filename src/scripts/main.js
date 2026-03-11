@@ -1,6 +1,6 @@
 const { invoke } = window.__TAURI__.core;
 import { startupLesson, setSessionStorageLessonCount } from "./lesson.js";
-import { startupButtonsLogic } from "./buttons.js";
+import { startupButtonsLogic, changeToLesson } from "./buttons.js";
 
 var editor = ace.edit("editor-user");
 var editor_lesson = ace.edit("editor-lesson");
@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // workaround to fix issue with ace centering container on typing
   const editorsArea = document.querySelector(".editors-area");
   editorsArea.style.scrollBehavior = "auto";
-  editorsArea.scrollLeft = editorsArea.scrollWidth;
+  changeToLesson();
   editorsArea.style.scrollBehavior = "smooth";
 
   setSessionStorageLessonCount();

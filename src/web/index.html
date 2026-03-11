@@ -20,18 +20,26 @@
           <button class="check-button">
             <label>Run on system startup <input type="checkbox" id="autostart"></label>
           </button>
-          <span>TODO lesson speed 0.5x 1x 1.5x</span>
+          
         </div>
       </app-options>
     </div>
-    <div class="lesson-title">
-      <span class="text"></span>
-    </div>
-    <span class="lesson-instruction text" id="instruction"></span>
-    <div class="lesson-toolbar">
-      <!-- <button id="change-speed"></button> -->
-      <button id="switch-to-editor">Editor</button>
-      <button id="switch-to-lesson">Lesson</button>
+    <div class="lesson-area">
+      <div class="lesson-information">
+        <div class="lesson-title">
+        <span class="text"></span>
+      </div>
+      <div class="lesson-instruction" id="instruction"></div>
+      </div>
+      <div class="lesson-toolbar">
+        <input type="radio" name="choice" id="radio-user">
+        <label for="radio-user" class="radio-button" id="switch-to-editor"><img src="/assets/text.png" alt=""></label>
+        <!-- <button id="switch-to-editor" for="btn1" type="image"><img src="/assets/text.png" alt=""></button> -->
+        <input type="radio" name="choice" id="radio-lesson" checked>
+        <label for="radio-lesson" class="radio-button" id="switch-to-lesson"><img src="/assets/lesson.png"
+            alt=""></label>
+        <!-- <button id="switch-to-lesson"  type="image"><img src="/assets/lesson.png" alt=""></button> -->
+      </div>
     </div>
     <div class="editors-area">
       <div class="editor-user-area area">

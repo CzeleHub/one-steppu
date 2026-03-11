@@ -12,7 +12,27 @@ async function repeatInputSequence(template) {
     const spanInstruction = document.querySelector("#instruction");
 
     var lesson = parseInt(localStorage.getItem("lesson") || "0", 10) + 1;
-    spanInstruction.textContent = template.instruction;
+    // spanInstruction.textContent = template.instruction;
+    
+
+    for (const key of template.keys) {
+        const div = document.createElement("div");
+        const spanStart = document.createElement("span");
+        const spanEnd = document.createElement("span");
+        const spanSmallInput = document.createElement("span");
+
+        spanSmallInput.classList.add("small-input");
+
+        spanSmallInput.textContent = key.value;
+        spanStart.textContent = "Use ";
+        spanEnd.textContent = " key to " + key.tooltip;
+
+        div.appendChild(spanStart);
+        div.appendChild(spanSmallInput);
+        div.appendChild(spanEnd);
+        spanInstruction.appendChild(div);
+    }
+
     spanTitle.textContent = "#" + lesson + " " + template.title;
 
     editorUser.setValue(template.code, -1);
@@ -33,7 +53,7 @@ async function repeatInputSequence(template) {
 
         // set vim mode
         editor.onTextInput("esc");
-        
+
         //editor needs time to configure itself.. again
         await sleep(1000);
 
@@ -88,7 +108,6 @@ export function setSessionStorageLessonCount() {
 const lessons = [
     {
         title: "Vim - Basic Navigation",
-        instruction: "Use h j k l keys to navigate text in NORMAL mode",
         keys: [
             { value: "h", tooltip: "move cursor left" },
             { value: "j", tooltip: "move cursor down" },
@@ -139,5 +158,5 @@ const lessons = [
         language: "ace/mode/java"
     }
 
-    
+
 ];
