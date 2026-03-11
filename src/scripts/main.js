@@ -15,8 +15,11 @@ window.addEventListener("DOMContentLoaded", () => {
   editor_lesson.session.setMode("ace/mode/javascript");
   editor_lesson.setKeyboardHandler("ace/keyboard/vim");
 
-  
-  // document.querySelector(".editor-user-area").classList.add("display-none");
+  // workaround to fix issue with ace centering container on typing
+  const editorsArea = document.querySelector(".editors-area");
+  editorsArea.style.scrollBehavior = "auto";
+  editorsArea.scrollLeft = editorsArea.scrollWidth;
+  editorsArea.style.scrollBehavior = "smooth";
 
   setSessionStorageLessonCount();
 

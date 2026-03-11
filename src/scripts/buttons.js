@@ -27,10 +27,12 @@ export function startupButtonsLogic() {
     isEnabled().then(result => { checkInput.checked = result });
     buttonAutostart.addEventListener("click", () => isEnabled().then(result => { setAutostart(!result) }));
 
-    const buttonSwitch = document.getElementById("switch-editors");
+    const buttonEditor = document.getElementById("switch-to-editor");
+    const buttonLesson = document.getElementById("switch-to-lesson");
     // const buttonSpeed = document.getElementById("change-speed");
 
-    buttonSwitch.addEventListener("click", () => changeEditor());
+    buttonEditor.addEventListener("click", () => changeToEditor());
+    buttonLesson.addEventListener("click", () => changeToLesson());
     // buttonSpeed.addEventListener("click", () => );
 }
 
@@ -48,19 +50,29 @@ function changelesson(val) {
     location.reload();
 }
 
-function changeEditor() {
+function changeToEditor() {
     const editorsArea = document.querySelector(".editors-area");
     const buttonSwitch = document.getElementById("switch-editors");
 
     const scrollLeft = editorsArea.scrollLeft;
     const clientWidth = editorsArea.clientWidth;
 
-    if (scrollLeft == clientWidth) {
+    
         editorsArea.scrollLeft = 0;
-        buttonSwitch.textContent = "Try it out!";
-    } else {
-        editorsArea.scrollLeft = editorsArea.scrollWidth;
-        buttonSwitch.textContent = "Rewatch the example";
+        // buttonSwitch.textContent = "Rewatch the example";
         ace.edit("editor-user").focus();
-    }
+    
+}
+
+function changeToLesson() {
+    const editorsArea = document.querySelector(".editors-area");
+    const buttonSwitch = document.getElementById("switch-editors");
+
+    const scrollLeft = editorsArea.scrollLeft;
+    const clientWidth = editorsArea.clientWidth;
+
+    
+        editorsArea.scrollLeft = editorsArea.scrollWidth;
+        // buttonSwitch.textContent = "Try it out!";
+    
 }

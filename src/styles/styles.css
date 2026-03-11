@@ -142,6 +142,11 @@ span.lesson-tip {
   width: 100%;
   overflow-x: auto;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.area {
+  scroll-snap-align: start;
 }
 
 .editors-area::-webkit-scrollbar {
