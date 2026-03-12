@@ -1,9 +1,14 @@
+const { invoke } = window.__TAURI__.core;
 import { showInput, highlightInput } from "./input.js";
 
 var editor = ace.edit("editor-lesson");
 var editorUser = ace.edit("editor-user");
 
+var lessons;
+
 export async function startupLesson(lesson) {
+    lessons = await invoke("get_lessons", {  })
+    setSessionStorageLessonCount();
     await repeatInputSequence(lessons[lesson]);
 }
 
@@ -116,59 +121,3 @@ function playlessonProgressAnimation(seconds, percent) {
 export function setSessionStorageLessonCount() {
     sessionStorage.setItem("lessonsCount", lessons.length - 1);
 }
-
-const lessons = [
-    {
-        title: "Vim - Basic Navigation",
-        keys: [
-            { value: "h", tooltip: "move cursor left" },
-            { value: "j", tooltip: "move cursor down" },
-            { value: "k", tooltip: "move cursor up" },
-            { value: "l", tooltip: "move cursor right" },
-        ],
-        code: "let arr: [[i32; 5]; 5] = [\n" +
-            "    [0, 1, 2, 3, 4],\n" +
-            "    [5, 6, 7, 8, 9],\n" +
-            "    [0, 1, 2, 3, 4],\n" +
-            "    [5, 6, 7, 8, 9],\n" +
-            "    [0, 1, 2, 3, 4],\n" +
-            "];",
-        input: ['j', 'j', 'k', 'l', 'l', 'k', 'h', 'h'],
-        cursor: [3, 11],
-        language: "ace/mode/rust"
-    },
-    {
-        title: "Vim - Basic Navigation",
-        instruction: "Use H M L keys to navigate text in NORMAL mode",
-        keys: [
-            { value: "H", tooltip: "move cursor to top of editor" },
-            { value: "M", tooltip: "move cursor to middle of editor" },
-            { value: "L", tooltip: "move cursor to bottom of editor" },
-        ],
-        code: "let arr: [[i32; 5]; 5] = [\n" +
-            "    [0, 1, 2, 3, 4],\n" +
-            "    [5, 6, 7, 8, 9],\n" +
-            "    [0, 1, 2, 3, 4],\n" +
-            "    [5, 6, 7, 8, 9],\n" +
-            "    [0, 1, 2, 3, 4],\n" +
-            "];",
-        input: ['H', 'M', 'L'],
-        cursor: [2, 11],
-        language: "ace/mode/rust"
-    },
-    {
-        title: "Vim - Basic Navigation",
-        instruction: "Use w key to jump forward to the start of the word in NORMAL mode",
-        keys: [
-            { value: "w", tooltip: "jump forward to the start of the word" },
-        ],
-        code: "public static void processAbstractFactoryServiceProviderManagerContext() {\n" +
-            "     AbstractFactoryServiceProviderManager.getInstance().initializeContext();\n" +
-            "}",
-        input: ['w', 'w', 'w', 'w'],
-        cursor: [0, 0],
-        language: "ace/mode/java"
-    }
-
-
-];

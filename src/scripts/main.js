@@ -22,13 +22,10 @@ window.addEventListener("DOMContentLoaded", () => {
   sessionStorage.setItem("interrupt", JSON.stringify(false));
   editorsArea.style.scrollBehavior = "smooth";
 
-  setSessionStorageLessonCount();
-
   var lesson = parseInt(localStorage.getItem("lesson") || "0", 10);
 
   startupLesson(lesson);
   startupButtonsLogic();
-
 });
 
 
