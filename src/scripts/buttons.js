@@ -1,5 +1,6 @@
 
 import { setAutostart } from "./autostart.js";
+import "./confetti/party.min.js";
 const { isEnabled } = window.__TAURI__.autostart;
 
 export function startupButtonsLogic() {
@@ -34,6 +35,13 @@ export function startupButtonsLogic() {
     buttonEditor.addEventListener("click", () => changeToEditor());
     buttonLesson.addEventListener("click", () => changeToLesson());
     // buttonSpeed.addEventListener("click", () => );
+
+    const buttonConfetti = document.getElementById("confetti");
+    buttonConfetti.addEventListener("click", function (e) {
+        party.confetti(this, {
+            count: party.variation.range(20, 40),
+        });
+    });
 }
 
 function changelesson(val) {

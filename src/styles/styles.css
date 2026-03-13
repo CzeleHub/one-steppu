@@ -274,7 +274,7 @@ div.lesson-toolbar input {
 
 .input:hover,
 .input-user:hover,
-input:checked + .radio-button {
+input:checked+.radio-button {
   outline: 2px solid var(--color-text-unfocus);
 }
 
@@ -283,13 +283,13 @@ input:checked + .radio-button {
   background-color: var(--color-background);
   border: 1px solid var(--color-border);
   border-radius: 5px;
-  height: fit-content;  
+  height: fit-content;
   width: fit-content;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.radio-button:hover {  
+.radio-button:hover {
   color: var(--color-text);
   background-color: rgba(255, 255, 255, 0.1);
 }
@@ -309,7 +309,7 @@ span.small-input {
   border-radius: 5px;
   min-width: 1lh;
   min-height: 1lh;
-  justify-content: center;   
+  justify-content: center;
 }
 
 #instruction {
@@ -318,7 +318,7 @@ span.small-input {
   padding-bottom: 5px;
 }
 
-#instruction > div {
+#instruction>div {
   min-height: fit-content;
 }
 
