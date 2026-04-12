@@ -32,3 +32,105 @@ language = "ace/mode/java"
 keys = [
     { value = "w", tooltip = "jump forward to the start of the word" },
 ]
+
+[[lessons]]
+title = "Vim - Word Forward Navigation"
+code = "fn calculate_total_price(item_count: u32, unit_price: f64) -> f64 {\n    item_count as f64 * unit_price\n}"
+input = ["w", "w", "w", "b", "b"]
+cursor = [0, 0]
+language = "ace/mode/rust"
+keys = [
+{ value = "w", tooltip = "jump forwards to the start of a word" },
+{ value = "b", tooltip = "jump backwards to the start of a word" },
+]
+
+[[lessons]]
+title = "Vim - Word End Navigation"
+code = "const maxRetries = getConfigValue(DEFAULT_TIMEOUT);"
+input = ["e", "e", "e", "b", "e"]
+cursor = [0, 0]
+language = "ace/mode/javascript"
+keys = [
+{ value = "e", tooltip = "jump forwards to the end of a word" },
+{ value = "b", tooltip = "jump backwards to the start of a word" },
+]
+
+[[lessons]]
+title = "Vim - Line Start and End"
+code = "    public String getUserDisplayName(User user) {\n        return user.getFirstName() + \" \" + user.getLastName();\n    }"
+input = ["$", "0", "$", "^"]
+cursor = [1, 8]
+language = "ace/mode/java"
+keys = [
+{ value = "$", tooltip = "jump to the end of the line" },
+{ value = "0", tooltip = "jump to the start of the line" },
+{ value = "^", tooltip = "jump to the first non-blank character of the line" },
+]
+
+[[lessons]]
+title = "Vim - Document Start and End"
+code = "import os\nimport sys\n\ndef main():\n    print(\"hello\")\n\nif __name__ == \"__main__\":\n    main()"
+input = ["G", "g", "g", "G"]
+cursor = [0, 0]
+language = "ace/mode/python"
+keys = [
+{ value = "G", tooltip = "go to the last line of the document" },
+{ value = "g", tooltip = "press twice (gg) to go to the first line of the document" },
+]
+
+[[lessons]]
+title = "Vim - Matching Bracket Jump"
+code = "function resolve(data) {\n  return data.filter((x) => x > 0).map((x) => x * 2);\n}"
+input = ["%", "l", "l", "l", "%"]
+cursor = [0, 18]
+language = "ace/mode/javascript"
+keys = [
+{ value = "%", tooltip = "move cursor to matching bracket character ( ), { }, [ ]" },
+{ value = "l", tooltip = "move cursor right" },
+]
+
+[[lessons]]
+title = "Vim - Find Character on Line"
+code = "background-color: rgba(255, 128, 0, 0.5);"
+input = ["f", ",", "f", ",", "F", ",", ";"]
+cursor = [0, 0]
+language = "ace/mode/css"
+keys = [
+{ value = "f", tooltip = "jump to next occurrence of a character (type f then the character)" },
+{ value = "F", tooltip = "jump to previous occurrence of a character (type F then the character)" },
+{ value = ";", tooltip = "repeat previous f, t, F or T movement" },
+]
+
+[[lessons]]
+title = "Vim - Paragraph Jump"
+code = "struct Config {\n    timeout: u32,\n    retries: u8,\n}\n\nimpl Config {\n    fn default() -> Self {\n        Config { timeout: 30, retries: 3 }\n    }\n}"
+input = ["}", "{", "}"]
+cursor = [0, 0]
+language = "ace/mode/rust"
+keys = [
+{ value = "}", tooltip = "jump to next paragraph or code block" },
+{ value = "{", tooltip = "jump to previous paragraph or code block" },
+]
+
+[[lessons]]
+title = "Vim - Large Word Navigation (WORD)"
+code = "host='db.internal:5432/myapp?sslmode=require&connect_timeout=10'"
+input = ["W", "W", "B", "W"]
+cursor = [0, 0]
+language = "ace/mode/sh"
+keys = [
+{ value = "W", tooltip = "jump forwards to the start of a WORD (can contain punctuation)" },
+{ value = "B", tooltip = "jump backwards to the start of a WORD (can contain punctuation)" },
+]
+
+[[lessons]]
+title = "Vim - Screen Position Jump"
+code = "type Result<T> = std::result::Result<T, Error>;\n\nfn parse(input: &str) -> Result<i32> {\n    input.trim().parse::<i32>().map_err(Error::from)\n}\n\nfn format(n: i32) -> String {\n    format!(\"{:>10}\", n)\n}"
+input = ["L", "M", "H"]
+cursor = [3, 0]
+language = "ace/mode/rust"
+keys = [
+{ value = "L", tooltip = "move cursor to bottom of screen" },
+{ value = "M", tooltip = "move cursor to middle of screen" },
+{ value = "H", tooltip = "move cursor to top of screen" },
+]
